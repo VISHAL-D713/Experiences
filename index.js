@@ -18,7 +18,8 @@ const session = require("express-session");
 
 // Fixed: Import connect-mongo directly without .default
 // const MongoStore = require("connect-mongo");
-const { create: MongoStoreCreate } = require("connect-mongo");
+// const { create: MongoStoreCreate } = require("connect-mongo");
+const MongoStore = require("connect-mongo");
 const flash = require("express-flash");
 
 const passport = require("passport");
@@ -50,7 +51,7 @@ main()
     });
 
 // Configured MongoStore for express-session
-const store = MongoStoreCreate({
+const store = MongoStore.create({
     mongoUrl: dbUrl,
     crypto: {
         secret: process.env.SECRET || "Vishal713",
