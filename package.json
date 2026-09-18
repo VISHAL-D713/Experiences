@@ -1,6 +1,6 @@
 {
-  "engines":{
-    "node":"22.22.2"
+  "engines": {
+    "node": "22.22.2"
   },
   "name": "project-phase-a",
   "version": "1.0.0",
@@ -13,7 +13,7 @@
   "author": "Vishal Deshmukh",
   "license": "ISC",
   "dependencies": {
-    "cloudinary": "^2.11.0",
+    "cloudinary": "^1.41.3",
     "connect-flash": "^0.1.1",
     "connect-mongo": "^6.0.0",
     "cookie": "^2.0.1",
