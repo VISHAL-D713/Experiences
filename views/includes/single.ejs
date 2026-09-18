@@ -1,0 +1,210 @@
+<% layout("/layouts/boilerplate") %>
+
+<section class="experience-detail">
+
+    <div class="detail-image">
+        <img
+            src="<%= listing.image.url %>"
+            alt="<%= listing.title %>"
+        >
+        
+        <span class="detail-category">
+            <%= listing.category %>
+        </span>
+    </div>
+
+
+    <div class="detail-content">
+
+        <div class="detail-header">
+
+            <span class="detail-label">
+                EXPERIENCE
+            </span>
+
+            <h1>
+                <%= listing.title %>
+            </h1>
+
+<p>
+  
+    <h4 style="font-family:  Cochin, Georgia, Times, 'Times New Roman', serif;"><i>Written by : <%= listing.author.username %></i></h4>
+</p>
+
+            <p class="detail-description">
+                <%= listing.description %>
+            </p>
+
+        </div>
+
+
+        <div class="detail-stats">
+
+            <div class="stat">
+                <span class="stat-icon">♥</span>
+                <div>
+                    <strong><%= listing.likes %></strong>
+                    <small>Likes</small>
+                </div>
+            </div>
+
+            <div class="stat">
+                <span class="stat-icon">↗</span>
+                <div>
+                    <strong><%= listing.shares %></strong>
+                    <small>Shares</small>
+                </div>
+            </div>
+
+            <div class="stat">
+                <span class="stat-icon">#</span>
+                <div>
+                    <strong><%= listing.category %></strong>
+                    <small>Category</small>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="detail-actions">
+<%if(currUser && currUser.id===(listing.author.id)) {%>
+            <a
+                href="/experiences/<%= listing._id %>/edit"
+                class="edit-btn"
+            >
+                Edit Experience
+            </a>
+
+            <form
+                action="/experiences/<%= listing._id %>/delete?_method=DELETE"
+                method="post"
+            >
+                <button class="delete-btn">
+                    Delete
+                </button>
+            </form>
+<% } %>
+            <a
+                href="/experiences"
+                class="back-btn"
+            >
+                ← Back to Experiences
+            </a>
+
+        </div>
+<div class="invalid-feedback">Please submit some textual review</div>
+    </div>
+</section>
+
+//Review-Section!!!
+
+
+<div class="review-section">
+
+    <div class="review-header">
+        <h4>Leave a Review</h4>
+        <p>What did you think about this experience?</p>
+    </div>
+    <%if(currUser) {%>
+
+    <hr>
+<form action="/experiences/<%= listing.id %>/reviews" method="post" class="review-form needs-validation" novalidate>
+
+        <div class="review-field">
+            <label for="rating" class="form-label">
+                Leave a rating
+            </label>
+
+            <div class="rating-wrapper">
+                
+                <fieldset class="starability-slot">
+                    
+                    <input type="radio" id="no-rate" class="input-no-rate" name="rating" value="0" checked aria-label="No rating." />
+                    <input type="radio" id="first-rate1" name="rating" value="1" />
+                    <label for="first-rate1" title="Terrible">1 star</label>
+                    <input type="radio" id="first-rate2" name="rating" value="2" />
+                    <label for="first-rate2" title="Not good">2 stars</label>
+                    <input type="radio" id="first-rate3" name="rating" value="3" />
+                    <label for="first-rate3" title="Average">3 stars</label>
+                    <input type="radio" id="first-rate4" name="rating" value="4" />
+                    <label for="first-rate4" title="Very good">4 stars</label>
+                    <input type="radio" id="first-rate5" name="rating" value="5" />
+                    <label for="first-rate5" title="Amazing">5 stars</label>
+                </fieldset>
+            </div>
+        </div>
+        
+        
+        <div class="review-field">
+            <label for="comment" class="form-label">
+                Comment
+            </label>
+            
+            <textarea
+            name="review"
+            id="comment"
+            rows="5"
+            placeholder="Share your thoughts..."
+            class="form-control comment-box"
+            required
+            ></textarea>
+            <div class="invalid-feedback">
+                Please submit some textual review.
+            </div>
+        </div>
+        
+        
+        <button type="submit" class="review-submit">
+            Submit Review →
+        </button>
+        <% } %>
+    </form>
+    
+</div>
+<hr />
+
+
+<div class="reviews-section">
+    <h3 class="reviews-title">
+        <i class="fa-solid fa-comments"></i> All Reviews
+    </h3>
+    
+    <% if (listing.reviews.length === 0) { %>
+        <p class="no-reviews">No reviews yet. Be the first to share your opinion!</p>
+        <% } %>
+        
+        <div class="reviews-container">
+            <% for (let review of listing.reviews) { %>
+                
+                <div class="review-card">
+                    
+                    <div class="review-header">
+                        <div class="review-avatar">
+                            <i class="fa-solid fa-user"></i>
+                        </div>
+                        
+                        <div>
+                            <h5><%= review.author.username %></h5>
+                            <div class="review-rating">
+                                <i class="fa-solid fa-star"></i>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <p class="starability-result" data-rating="<%= review.rating %>">
+                    <h6>Rated: <%= review.rating %> stars</h6>
+                    </p>
+
+                <p class="review-content">
+                    <%= review.review %>
+                </p>
+<form action="/experiences/<%= listing.id %>/reviews/<%= review.id %>?_method=DELETE" method="post">
+    <button class="review-delete">Delete</button>
+</form>
+            </div>
+
+
+        <% } %>
+    </div>
+</div>

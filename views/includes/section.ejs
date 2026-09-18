@@ -1,0 +1,80 @@
+<section class="experiences-section">
+
+    <div class="section-heading">
+        <div>
+            <span class="section-eyebrow">DISCOVER SOMETHING NEW</span>
+            <h1>Explore Experiences</h1>
+        </div>
+
+        <a href="/experiences/new" class="create-experience">
+            + Create Experience
+        </a>
+    </div>
+
+
+    <div class="experience-grid">
+
+        <% allListings.forEach(listing => { %>
+
+            <article class="experience-card">
+
+                <div class="card-image-wrapper">
+
+                    <img
+                        src="<%= listing.image.url %>"
+                        alt="<%= listing.title %>"
+                        class="card-image"
+                    >
+
+                    <div class="category-badge">
+                        <%= listing.category %>
+                    </div>
+
+                    <div class="image-overlay"></div>
+
+                </div>
+
+
+                <div class="card-content">
+
+                    <h2 class="card-title">
+                        <%= listing.title %>
+                    </h2>
+
+                    <p class="card-description">
+                        <%= listing.description %>
+                    </p>
+
+
+                    <div class="card-meta">
+
+                        <div class="engagement">
+
+                            <span>
+                                ♥ <%= listing.likes %>
+                            </span>
+
+                            <span>
+                                ↗ <%= listing.shares %>
+                            </span>
+
+                        </div>
+
+                        <a
+                            href="/experiences/<%= listing._id %>"
+                            class="explore-link"
+                        >
+                            Explore →
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+        <% }) %>
+
+    </div>
+
+</section>

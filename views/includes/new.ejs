@@ -1,0 +1,129 @@
+<% layout("/layouts/boilerplate") %>
+
+
+
+<section class="form-page">
+
+    <div class="form-header">
+        <span class="form-eyebrow">SHARE SOMETHING NEW</span>
+
+        <h1>Create an Experience</h1>
+
+        <p>
+            Share an idea, story, discovery, or experience
+            with the community.
+        </p>
+    </div>
+
+    <div class="form-card">
+
+        <form action="/experiences/new"
+              method="post"
+              class="needs-validation"
+              novalidate
+              enctype="multipart/form-data"
+              >
+
+            <!-- TITLE -->
+
+            <div class="form-group">
+                <label for="title">Experience Title</label>
+
+                <input
+                    id="title"
+                    type="text"
+                    name="title"
+                    class="form-control"
+                    placeholder="Enter a meaningful title..."
+                    required
+                >
+
+                <div class="invalid-feedback">
+                    Please enter a title for your experience.
+                </div>
+            </div>
+
+
+            <!-- DESCRIPTION -->
+
+            <div class="form-group">
+                <label for="description">Description</label>
+
+                <textarea
+                    id="description"
+                    name="description"
+                    class="form-control"
+                    placeholder="Tell people about this experience..."
+                    rows="7"
+                    required
+                ></textarea>
+
+                <div class="invalid-feedback">
+                    Please enter a description.
+                </div>
+            </div>
+
+
+            <!-- IMAGE -->
+
+            <div class="form-group">
+                <label for="image">Image Upload</label>
+
+                <input
+                    id="image"
+                    type="file"
+                    name="image"
+                    class="form-control"
+                   
+                    required
+                >
+
+                <small>
+                    Upload better images mate servers are melting
+                </small>
+
+                <div class="invalid-feedback">
+                    Please enter a valid image URL.
+                </div>
+            </div>
+
+
+            <!-- CATEGORY -->
+
+            <div class="form-group">
+                <label for="category">Category</label>
+
+                <input
+                    id="category"
+                    type="text"
+                    name="category"
+                    class="form-control"
+                    placeholder="Technology, Anime, Sports..."
+                    required
+                >
+
+                <div class="invalid-feedback">
+                    Please enter a category.
+                </div>
+            </div>
+
+
+            <!-- BUTTONS -->
+
+            <div class="form-actions">
+
+                <a href="/experiences" class="cancel-btn">
+                    Cancel
+                </a>
+
+                <button type="submit" class="submit-btn">
+                    Publish Experience →
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</section>

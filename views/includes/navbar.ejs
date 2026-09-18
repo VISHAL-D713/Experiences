@@ -1,0 +1,66 @@
+<nav class="main-navbar">
+
+    <div class="nav-container">
+
+        <!-- LOGO -->
+        <a href="/experiences" class="brand">
+            <span class="brand-mark">✦</span>
+            <span class="brand-name">EXPERIA</span>
+        </a>
+
+
+        <!-- NAVIGATION -->
+        <div class="nav-links">
+
+            <a href="/experiences" class="nav-link">
+                Explore
+            </a>
+
+            <a href="/experiences/new" class="nav-link">
+                Create
+            </a>
+
+            <a href="/experiences" class="nav-link">
+                Discover
+            </a>
+
+            <% if (!currUser) {%>
+                        <a href="/users/signup" class="nav-link">
+                
+           Signup
+            </a>
+            <a href="/users/login" class="nav-link">
+               
+                Login
+            </a>
+            <% } %>
+<% if(currUser) {%> 
+            <a href="/users/logout" class="nav-link">
+               
+               Logout
+            </a>
+<% } %>
+
+        </div>
+
+
+        <!-- RIGHT SIDE -->
+        <div class="nav-actions">
+
+            <a href="/experiences/new" class="create-btn">
+                
+                Share Experience
+            </a>
+
+        </div>
+
+
+        <!-- MOBILE MENU BUTTON -->
+        <button class="mobile-menu" type="button" aria-label="Open menu">
+            ☰
+        </button>
+
+    </div>
+
+</nav>
+

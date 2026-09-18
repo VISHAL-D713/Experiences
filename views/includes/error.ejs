@@ -1,0 +1,33 @@
+
+
+  
+
+    
+
+
+    <div class="error-container">
+
+        <div class="error-code">
+            <%= status || 500 %>
+        </div>
+
+        <h1 class="error-title">
+            Something went wrong
+        </h1>
+
+        <p class="error-message">
+            <%= message || "Sorry, something unexpected happened. Please try again." %>
+        </p>
+
+        <a href="/" class="home-btn">
+            ← Back to Home
+        </a>
+
+        <div class="error-details">
+            Error <%= status || 500 %> · Please try again later
+        </div>
+
+    </div>
+
+</body>
+</html>
