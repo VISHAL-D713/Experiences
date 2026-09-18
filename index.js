@@ -33,7 +33,6 @@ const dbUrl = process.env.ATLASDB_URL;
 // Fixed: Database connection with TLS and timeout configurations to resolve SSL alerts
 async function main() {
     await mongoose.connect(dbUrl, {
-        tls: true,
         serverSelectionTimeoutMS: 5000,
         socketTimeoutMS: 45000,
     });
