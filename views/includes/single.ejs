@@ -68,7 +68,7 @@
 
 
         <div class="detail-actions">
-<%if(currUser && currUser.id===(listing.author.id)) {%>
+<%if(typeof currUser !== 'undefined' && currUser && currUser.id===(listing.author.id)) {%>
             <a
                 href="/experiences/<%= listing._id %>/edit"
                 class="edit-btn"
@@ -106,7 +106,7 @@
         <h4>Leave a Review</h4>
         <p>What did you think about this experience?</p>
     </div>
-    <%if(currUser) {%>
+    <%if(typeof currUser !== 'undefined' && currUser) {%>
 
     <hr>
 <form action="/experiences/<%= listing.id %>/reviews" method="post" class="review-form needs-validation" novalidate>

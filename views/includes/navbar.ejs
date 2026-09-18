@@ -24,7 +24,7 @@
                 Discover
             </a>
 
-            <% if (!currUser) {%>
+            <% if (typeof currUser === 'undefined' || !currUser) {%>
                         <a href="/users/signup" class="nav-link">
                 
            Signup
@@ -34,7 +34,7 @@
                 Login
             </a>
             <% } %>
-<% if(currUser) {%> 
+<% if(typeof currUser !== 'undefined' && currUser) {%> 
             <a href="/users/logout" class="nav-link">
                
                Logout
